@@ -10,7 +10,7 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express ();
 
-const posts = [{title: "Day 1", body: homeStartingContent}];
+const posts = [{title: "Day 1", body: "Day 1, wahoo! can't wait to blog about my daily adventures!"}];
 
 app.set ( 'view engine', 'ejs' );
 
@@ -18,7 +18,11 @@ app.use ( bodyParser.urlencoded ( {extended: true} ) );
 app.use ( express.static ( "public" ) );
 
 app.get ( "/", function (req, res) {
-    res.render ( "home", {posts: posts} );
+    res.render ( "home",
+        {
+            startingContent: homeStartingContent,
+            posts: posts
+        } );
 } );
 
 app.get ( "/about", function (req, res) {
