@@ -51,6 +51,24 @@ app.post ( "/compose", function (req, res) {
     res.redirect ( "/" );
 } );
 
+app.get ( "/:title", function (req, res) {
+
+    let index = -1;
+
+    for (var i = 0; i < posts.length; i++) {
+        var navTitle = posts[i].title.replace ( " ", "" ).toLowerCase ();
+        if (navTitle.match ( req.params.title )) {
+            index = i;
+        }
+    }
+    if (index === -1) {
+        res.redirect ( "/" );
+    } else {
+        res.render ( "post", {startingContent: posts[index]} );
+    }
+} );
+
+
 app.listen ( 3000, function () {
     console.log ( "Server started on port 3000" );
 } );
