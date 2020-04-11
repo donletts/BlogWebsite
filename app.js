@@ -58,10 +58,12 @@ app.post ( "/compose", function (req, res) {
 app.get ( "/:title", function (req, res) {
 
     let index = -1;
+    let requestedTitle = _.kebabCase ( req.params.title );
 
     for (let i = 0; i < posts.length; i++) {
-        let navTitle = _.kebabCase ( posts[i].title );
-        if (navTitle.match ( req.params.title )) {
+        let storedTitle = _.kebabCase ( posts[i].title );
+
+        if (requestedTitle.match ( storedTitle )) {
             index = i;
         }
     }
