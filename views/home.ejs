@@ -5,9 +5,9 @@
 <p><%= startingContent %></p>
 
 <% posts.forEach((post) => { %>
-    <% let navPost = "/" + post.title.replace ( " ", "" ).toLowerCase (); %>
+    <% let navPost = "/" + post.title.replace ( " ", "-" ).toLowerCase (); %>
     <h2><a href=<%= navPost %>><%= post.title %></a></h2>
-    <p><%= post.body %></p>
+    <p><%= post.body.substring(0, 100) + " ..." %></p>
 <% }); %>
 
 <%- include("partials/footer"); -%>
