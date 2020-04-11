@@ -51,6 +51,9 @@ app.post ( "/compose", function (req, res) {
     res.redirect ( "/" );
 } );
 
+// FYI, node looks for routes in order. if this were above
+// the other routes it would take precedence
+// this needs to be at the end because it's the most greedy
 app.get ( "/:title", function (req, res) {
 
     let index = -1;
